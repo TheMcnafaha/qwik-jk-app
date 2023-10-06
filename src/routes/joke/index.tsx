@@ -52,7 +52,13 @@ export default component$(() => {
         >
           {isFavoriteSignal.value ? "❤️" : "🤍"}
         </button>
-        <Form action={favoriteAction} class="flex justify-between ">
+        <Form
+          action={favoriteAction}
+          onSubmit$={() => {
+            isFavoriteSignal.value = false;
+          }}
+          class="flex justify-between  "
+        >
           <div class=" flex max-w-[100px] justify-between gap-4 ">
             <input type="hidden" name="jokeID" value={dadJokeSignal.value.id} />
             <button
