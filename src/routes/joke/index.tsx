@@ -6,10 +6,13 @@ import {
   server$,
 } from "@builder.io/qwik-city";
 
+let lolArr = [];
 export const useDadJoke = routeLoader$(async function getJokeFromDB() {
   const response = await fetch("https://icanhazdadjoke.com/", {
     headers: { Accept: `application/json` },
   });
+  console.log("hit endpoint");
+
   return (await response.json()) as {
     id: string;
     status: number;
@@ -18,6 +21,10 @@ export const useDadJoke = routeLoader$(async function getJokeFromDB() {
 });
 export const useJoveVoteAction = routeAction$((props) => {
   console.log("Voted: ", props);
+  const coolObj = { ...props };
+  lolArr.push(props);
+
+  console.log("Total: ", lolArr);
 });
 export default component$(() => {
   const isFavoriteSignal = useSignal(false);
@@ -62,6 +69,11 @@ export default component$(() => {
             >
               👎
             </button>
+            <input
+              type="hidden"
+              name="isFav"
+              value={`${isFavoriteSignal.value}`}
+            />
           </div>
         </Form>
       </div>
