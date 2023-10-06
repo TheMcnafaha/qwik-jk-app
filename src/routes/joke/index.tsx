@@ -31,7 +31,7 @@ export default component$(() => {
     })();
   });
   return (
-    <section class="flex  flex-col gap-4  p-4">
+    <section class="flex  flex-col gap-4 max-w-md  p-4">
       <p class=" rounded-lg border-2  border-purple-950 bg-purple-900 p-4">
         {" "}
         {dadJokeSignal.value.joke}
