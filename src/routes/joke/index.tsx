@@ -32,11 +32,11 @@ export default component$(() => {
   });
   return (
     <section class="flex  flex-col gap-4  p-4">
-      <p class=" rounded-lg border-2 border-purple-950 bg-purple-900 p-4">
+      <p class=" rounded-lg border-2  border-purple-950 bg-purple-900 p-4">
         {" "}
         {dadJokeSignal.value.joke}
       </p>
-      <Form action={favoriteAction} class="flex justify-between ">
+      <div class=" flex justify-between ">
         <button
           class="rounded-md border-2 border-blue-950 bg-violet-600 px-2 py-1 "
           onClick$={() => {
@@ -45,24 +45,26 @@ export default component$(() => {
         >
           {isFavoriteSignal.value ? "❤️" : "🤍"}
         </button>
-        <div class=" flex max-w-[100px] justify-between gap-4 ">
-          <input type="hidden" name="jokeID" value={dadJokeSignal.value.id} />
-          <button
-            name="vote"
-            value="up"
-            class="rounded-md border-2 border-blue-950 bg-violet-600 px-2 py-1 "
-          >
-            👍
-          </button>
-          <button
-            name="vote"
-            value="down"
-            class=" rounded-md border-2 border-blue-950 bg-violet-600 px-2 py-1 "
-          >
-            👎
-          </button>
-        </div>
-      </Form>
+        <Form action={favoriteAction} class="flex justify-between ">
+          <div class=" flex max-w-[100px] justify-between gap-4 ">
+            <input type="hidden" name="jokeID" value={dadJokeSignal.value.id} />
+            <button
+              name="vote"
+              value="up"
+              class="rounded-md border-2 border-blue-950 bg-violet-600 px-2 py-1 "
+            >
+              👍
+            </button>
+            <button
+              name="vote"
+              value="down"
+              class=" rounded-md border-2 border-blue-950 bg-violet-600 px-2 py-1 "
+            >
+              👎
+            </button>
+          </div>
+        </Form>
+      </div>
     </section>
   );
 });
